@@ -1,0 +1,14 @@
+/* CONTAINER */
+.container {
+  padding-inline: 16px;
+
+  @include min_992 {
+    padding-inline: 172px;
+  }
+
+  &--small {
+    @include min_992 {
+      padding-inline: 51px;
+    }
+  }
+}

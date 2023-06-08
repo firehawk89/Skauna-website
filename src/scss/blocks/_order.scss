@@ -1,0 +1,503 @@
+/* ORDER */
+.order {
+  &__container {
+    padding-top: calc(var(--scroll-padding) + 35px);
+    padding-bottom: 50px;
+
+    @include _992 {
+      padding-top: calc(var(--scroll-padding) + 21px);
+      padding-bottom: 19px;
+    }
+  }
+
+  &__body {
+    margin-top: -1px;
+    position: relative;
+    background-color: #fff;
+
+    @include _992 {
+      padding-top: 10px;
+    }
+  }
+
+  &__title {
+    font-size: 64px;
+    line-height: 83px;
+    text-align: center;
+
+    @include _992 {
+      font-size: 32px;
+      line-height: 42px;
+    }
+  }
+
+  &__form {
+    padding: 92px 120px 83px 0px;
+    display: flex;
+    gap: 120px;
+
+    @include _1366 {
+      padding-right: 30px;
+      gap: 30px;
+    }
+
+    @include _992 {
+      padding: 31px 0px;
+      flex-direction: column;
+      gap: 47px;
+    }
+
+    &-column {
+      width: 100%;
+    }
+
+    &-title {
+      margin-bottom: 25px;
+      width: fit-content;
+      font-size: 32px;
+      line-height: 42px;
+
+      @include _992 {
+        font-size: 24px;
+        line-height: 31px;
+        color: $color-blue-light;
+        text-align: center;
+        margin-inline: auto;
+      }
+
+      &--left {
+        position: relative;
+        padding-left: 129px;
+
+        @include _1366 {
+          padding-left: 65px;
+        }
+
+        @include _992 {
+          padding: 0px;
+          margin-bottom: 20px;
+
+          &.is-active {
+            &::after {
+              transform: rotate(90deg);
+            }
+          }
+        }
+
+        &::after {
+          display: none;
+          position: absolute;
+          top: 0;
+          right: -8px;
+          translate: 100% 0;
+          content: url("./../assets/images/toggler.svg");
+          transition: all 0.5s ease;
+        }
+
+        @include _992 {
+          &::after {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .form__input {
+      @include _1366 {
+        padding-left: 65px;
+      }
+
+      @include _992 {
+        padding-left: 44px;
+      }
+    }
+
+    .form__controls--checkbox {
+      @include _1366 {
+        padding-left: 27px;
+      }
+
+      @include _992 {
+        padding-left: 9px;
+      }
+    }
+  }
+
+  &__billing-form {
+    @include _992 {
+      opacity: 0;
+      max-height: 0px;
+      overflow: hidden;
+      transition: all 0.5s ease;
+
+      &.is-visible {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+
+    @include _992 {
+      padding-inline: 23px;
+      gap: 34px;
+    }
+
+    &-content {
+      display: flex;
+      gap: 20px;
+
+      @include _992 {
+        position: relative;
+        padding-bottom: 90px;
+      }
+    }
+
+    &-photo {
+      flex: 0 1 37%;
+
+      @include _992 {
+        flex: 0 1 63%;
+      }
+
+      &-img {
+        width: 100%;
+      }
+    }
+
+    &-info {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &-text {
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+
+        @include _992 {
+          flex-direction: column;
+          justify-content: initial;
+
+          span {
+            align-self: flex-end;
+          }
+        }
+
+        @include _568 {
+          gap: 50px;
+        }
+      }
+    }
+
+    &-control {
+      padding-inline: 12px;
+      width: fit-content;
+      background-color: $color-orange;
+      border-radius: 45px;
+      font-size: 26px;
+      line-height: 34px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 7px;
+
+      @include _992 {
+        padding-inline: 20px;
+        gap: 14px;
+        height: 46px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        translate: -50% 0;
+      }
+    }
+
+    &-btn-minus,
+    &-btn-plus {
+      color: inherit;
+      transition: all 0.5s ease;
+
+      &:hover {
+        color: $color-text;
+      }
+
+      &.is-disabled {
+        opacity: 0.3;
+
+        &:hover {
+          color: inherit;
+        }
+      }
+    }
+
+    &-total {
+      padding: 14px 0px 19px 0px;
+      border-top: 2px solid $color-text;
+      border-bottom: 2px solid $color-text;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include _992 {
+        padding: 15px 0px;
+      }
+
+      span {
+        font-size: 26px;
+        line-height: 34px;
+
+        &:last-child {
+          font-size: 17px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+
+  &__payment {
+    padding-top: 47px;
+
+    @include _992 {
+      padding-top: 51px;
+      padding-inline: 36px;
+    }
+
+    &-link {
+      display: block;
+      margin-bottom: 32px;
+
+      &:hover {
+        .order__payment-link-img {
+          transform: scale(0.985);
+        }
+      }
+
+      @include _992 {
+        margin-bottom: 11px;
+      }
+
+      &-img {
+        width: 100%;
+        transition: all 0.5s ease;
+
+        @include _992 {
+          max-width: 270px;
+          margin-inline: auto;
+        }
+      }
+    }
+
+    &-delimiter {
+      display: block;
+      width: 100%;
+      font-size: 32px;
+      line-height: 42px;
+      text-align: center;
+
+      @include _992 {
+        font-size: 20px;
+        line-height: 26px;
+      }
+    }
+
+    &-title {
+      margin-top: 20px;
+      font-size: 26px;
+      line-height: 34px;
+
+      @include _992 {
+        margin-top: 17px;
+        font-size: 20px;
+        line-height: 26px;
+      }
+    }
+
+    &-info {
+      position: relative;
+      margin-top: 7px;
+
+      @include _992 {
+        margin-top: 15px;
+      }
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "*";
+        translate: -100% -10%;
+        color: $color-blue-light;
+      }
+    }
+
+    &-controls {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+
+      @include min_992 {
+        &:first-child {
+          grid-column: span 2;
+        }
+      }
+
+      &--radio {
+        display: block;
+        position: relative;
+
+        @include _992 {
+          margin-left: -27px;
+        }
+
+        .order__payment-label {
+          cursor: pointer;
+          position: relative;
+          padding-left: 30px;
+
+          @include _992 {
+            padding-left: 27px;
+          }
+        }
+
+        .order__payment-input {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          translate: 0 -50%;
+          z-index: -1;
+          width: 0;
+          height: 0;
+          opacity: 0;
+
+          &:checked + .form__radio-custom {
+            &::after {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
+    &-card {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 30px;
+
+      @include _992 {
+        margin-top: 20px;
+        margin-inline: -36px;
+        grid-template-columns: 1fr;
+
+        .order__payment-label {
+          font-size: 12px;
+          line-height: 16px;
+
+          @include _992 {
+            padding-left: 36px;
+          }
+        }
+
+        .order__payment-input {
+          font-size: 12px;
+          line-height: 16px;
+
+          @include _992 {
+            padding-left: 53px;
+          }
+        }
+      }
+    }
+
+    &-label {
+      font-size: 12px;
+      line-height: 16px;
+
+      @include _992 {
+        font-size: 16px;
+        line-height: 21px;
+      }
+    }
+
+    &-input {
+      padding-inline: 9px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid rgba($color-text, 0.2);
+
+      &::placeholder {
+        font: inherit;
+        opacity: 0.2;
+      }
+    }
+
+    &-policy {
+      margin-top: 36px;
+      max-width: 321px;
+      font-size: 12px;
+      line-height: 16px;
+
+      @include _992 {
+        margin-top: 18px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: underline;
+        transition: all 0.5s ease;
+
+        &:hover {
+          color: $color-blue-light;
+        }
+      }
+    }
+
+    .form__controls {
+      padding: 0px;
+
+      &--checkbox {
+        margin-top: 30px;
+
+        @include _992 {
+          margin-top: 26px;
+        }
+      }
+    }
+
+    .form__label {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  &__submit-btn {
+    margin-top: 45px;
+    padding-inline: 15px;
+
+    @include _992 {
+      margin-top: 34px;
+      margin-inline: auto;
+    }
+  }
+
+  /*   &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+
+    &-img {
+      width: 100%;
+      height: 100%;
+    }
+  } */
+}

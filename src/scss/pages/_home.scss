@@ -1,0 +1,31 @@
+/* HOME PAGE */
+.home {
+  &__hero-container {
+    padding-top: calc(var(--scroll-padding) + 100px);
+    padding-bottom: 136px;
+
+    @include _992 {
+      padding-top: calc(var(--scroll-padding) + 20px);
+      padding-bottom: 20px;
+    }
+  }
+
+  &__hero-content {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    @include _992 {
+      padding: 22px 37px 76px;
+      justify-content: space-between;
+    }
+  }
+
+  &__hero-text {
+    max-width: 546px;
+
+    @include _992 {
+      max-width: unset;
+    }
+  }
+}

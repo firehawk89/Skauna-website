@@ -1,0 +1,239 @@
+/* FOOTER */
+.footer {
+  position: relative;
+
+  &__body {
+    margin-inline: -51px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    color: #fff;
+
+    @include _992 {
+      margin-inline: -16px;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__head {
+    padding: 50px 0px 25px 51px;
+    background-color: $color-text;
+
+    @include min_992 {
+      margin-right: -2px;
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    @include _992 {
+      padding: 15px 16px 29px;
+    }
+
+    &-subtitle {
+      font-size: 42px;
+      line-height: 55px;
+
+      @include _992 {
+        font-size: 17px;
+        line-height: 22px;
+      }
+    }
+
+    &-title {
+      font-size: 130px;
+      line-height: 152px;
+
+      @include _992 {
+        font-size: 54px;
+        line-height: 65px;
+      }
+    }
+  }
+
+  &__contact {
+    &-links {
+      display: flex;
+      flex-direction: column;
+      gap: -6px;
+    }
+
+    &-link {
+      font-size: 26px;
+      line-height: 34px;
+      color: inherit;
+      transition: all 0.5s ease;
+
+      &:hover {
+        color: $color-blue-light;
+      }
+
+      @include _992 {
+        font-size: 16px;
+        line-height: 21px;
+      }
+    }
+  }
+
+  &__form {
+    width: 84%;
+    padding: 59px 0px 35px 51px;
+    gap: 26px;
+
+    @include min_992 {
+      grid-row: 2;
+      grid-column: 1;
+    }
+
+    @include _992 {
+      position: relative;
+      padding: 23px 0px 47px 16px;
+      gap: 20px;
+
+      &::after {
+        position: absolute;
+        content: "";
+        top: -1px;
+        right: -19%;
+        bottom: 0;
+        width: 19%;
+        height: calc(100% + 2px);
+        background-color: $color-text;
+      }
+    }
+
+    &-controls {
+      margin-left: -129px;
+
+      @include _992 {
+        padding-bottom: 19px;
+      }
+    }
+
+    &-input {
+      font-size: 26px;
+      line-height: 34px;
+
+      @include _992 {
+        font-size: 16px;
+        line-height: 21px;
+      }
+    }
+
+    &-submit-btn {
+      align-self: flex-end;
+
+      @include _992 {
+        align-self: flex-start;
+      }
+    }
+  }
+
+  &__other {
+    padding: 50px 51px 35px 0px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $color-text;
+
+    @include min_992 {
+      padding-left: 31px;
+      grid-row: span 2;
+      grid-column: 2;
+    }
+
+    @include _992 {
+      padding: 57px 16px 39px;
+      gap: 89px;
+      justify-content: initial;
+    }
+  }
+
+  &__order {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+
+    @include min_992 {
+      padding: 0px 121px 0px 0px;
+    }
+
+    @include _992 {
+      align-items: center;
+      gap: 4px;
+    }
+
+    &-title {
+      font-size: 42px;
+      line-height: 55px;
+      text-align: right;
+
+      @include _992 {
+        font-size: 29px;
+        line-height: 38px;
+        text-align: center;
+      }
+    }
+  }
+
+  &__social {
+    position: absolute;
+    top: 50px;
+    right: 51px;
+    flex-direction: column;
+    gap: 35px;
+
+    @include _992 {
+      top: unset;
+      bottom: 57px;
+      right: 16px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 20px;
+
+    @include _992 {
+      flex-direction: column;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    @include _992 {
+      gap: 8px;
+    }
+
+    &-link {
+      display: block;
+      font-size: 13px;
+      line-height: 17px;
+      color: inherit;
+      transition: all 0.5s ease;
+
+      @include _992 {
+        font-size: 11px;
+        line-height: 14px;
+      }
+
+      &:hover {
+        color: $color-blue-light;
+      }
+
+      span {
+        display: block;
+        margin-top: 18px;
+
+        @include _992 {
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+}
