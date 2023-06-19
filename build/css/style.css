@@ -887,11 +887,25 @@ body.is-locked {
   }
 }
 .footer__head-title {
+  margin-left: -19px;
   font-size: 130px;
-  line-height: 152px;
+  line-height: 169px;
+}
+@media (max-width: 1534px) {
+  .footer__head-title {
+    font-size: 102px;
+    line-height: 132px;
+  }
+}
+@media (max-width: 1200px) {
+  .footer__head-title {
+    font-size: 84px;
+    line-height: 110px;
+  }
 }
 @media (max-width: 992px) {
   .footer__head-title {
+    margin-left: 0;
     font-size: 54px;
     line-height: 65px;
   }
@@ -2594,6 +2608,7 @@ body.is-locked {
 }
 .history__photo {
   margin-top: 124px;
+  margin-bottom: -2px;
   width: 100%;
 }
 @media (max-width: 992px) {
@@ -2778,6 +2793,10 @@ body.is-locked {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+}
+.home__hero-background-img {
+  -o-object-position: center top;
+     object-position: center top;
 }
 .home__hero-text {
   max-width: 546px;
