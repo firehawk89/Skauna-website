@@ -32,8 +32,7 @@
       font-size: 0;
       transition: all 0.5s ease;
       //border: 2px solid $color-text;
-      border-top: 2px solid $color-text;
-      border-bottom: 2px solid $color-text;
+      //box-shadow: inset 0px 2px 0px $color-text, inset 0px -2px 0px $color-text;
       border-radius: 0px; //45
 
       @include _992 {
@@ -43,16 +42,18 @@
       &::before,
       &::after {
         position: absolute;
-        top: -1px;
+        //top: -1px;
+        top: 0;
         content: "";
         width: 20px;
-        height: 40px;
+        //height: 40px;
+        height: 100%;
         border: 2px solid #003952;
 
         @include _992 {
           width: 17px;
-          height: 34px;
-          top: -1.5px;
+          //height: 34px;
+          //top: -1.5px;
         }
       }
 
@@ -86,6 +87,8 @@
         position: relative;
         width: 100%;
         height: 100%;
+        border-top: 2px solid $color-text;
+        border-bottom: 2px solid $color-text;
 
         &::before,
         &::after {
