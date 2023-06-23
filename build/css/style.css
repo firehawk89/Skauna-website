@@ -2410,8 +2410,6 @@ body.is-locked {
   -webkit-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  border-top: 2px solid #003952;
-  border-bottom: 2px solid #003952;
   border-radius: 0px;
 }
 @media (max-width: 992px) {
@@ -2421,17 +2419,15 @@ body.is-locked {
 }
 .history__slider-pagination li::before, .history__slider-pagination li::after {
   position: absolute;
-  top: -1px;
+  top: 0;
   content: "";
   width: 20px;
-  height: 40px;
+  height: 100%;
   border: 2px solid #003952;
 }
 @media (max-width: 992px) {
   .history__slider-pagination li::before, .history__slider-pagination li::after {
     width: 17px;
-    height: 34px;
-    top: -1.5px;
   }
 }
 .history__slider-pagination li::before {
@@ -2460,6 +2456,8 @@ body.is-locked {
   position: relative;
   width: 100%;
   height: 100%;
+  border-top: 2px solid #003952;
+  border-bottom: 2px solid #003952;
   /*  &::after {
     position: absolute;
     content: "";
