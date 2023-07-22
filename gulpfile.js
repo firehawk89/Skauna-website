@@ -4,8 +4,6 @@ const browserSync = require("browser-sync").create();
 const scss = require("gulp-sass")(require("sass"));
 const autoprefixer = require("gulp-autoprefixer");
 const concat = require("gulp-concat");
-const uglify = require("gulp-uglify-es").default;
-const babel = require("gulp-babel");
 const newer = require("gulp-newer");
 const webp = require("gulp-webp");
 const imagemin = require("gulp-imagemin");
@@ -14,6 +12,7 @@ const tt2woff2 = require("gulp-ttf2woff2");
 const del = require("del");
 const plumber = require("gulp-plumber");
 const notifier = require("gulp-notifier");
+const ghPages = require("gulp-gh-pages");
 
 const buildPath = "./build";
 const srcPath = "./src";
@@ -26,7 +25,7 @@ const path = {
     js: `${srcPath}/js/**/*.js`,
     img: `${srcPath}/assets/img/**/*.{jpg,jpeg,png,svg,gif}`,
     fonts: `${srcPath}/assets/fonts/**/*.{eot,ttf,woff,woff2,svg}`,
-    favicons: `${srcPath}/favicon.{ico,png}`,
+    favicon: `${srcPath}/favicon.{ico,png,svg}`,
   },
   build: {
     html: `${buildPath}/`,
@@ -34,7 +33,7 @@ const path = {
     js: `${buildPath}/js/`,
     img: `${buildPath}/assets/images/`,
     fonts: `${buildPath}/fonts/`,
-    favicons: `${buildPath}/`,
+    favicon: `${buildPath}/`,
   },
   watch: {
     html: `${srcPath}/*.html`,
@@ -43,13 +42,14 @@ const path = {
     js: `${srcPath}/js/**/*.js`,
     img: `${srcPath}/assets/img/**/*.{jpg,jpeg,png,svg,gif}`,
     fonts: `${srcPath}/assets/fonts/**/*.{eot,ttf,woff,woff2,svg}`,
-    favicons: `${srcPath}/favicon.{ico,png}`,
+    favicon: `${srcPath}/favicon.{ico,png,svg}`,
   },
   clean: `${buildPath}/*`,
   ignore: {
     img: `!${buildPath}/assets`,
     fonts: `!${buildPath}/fonts`,
   },
+  deploy: `${buildPath}/**/*`,
 };
 
 function sync() {
@@ -87,19 +87,10 @@ function scssTask() {
 }
 
 function jsTask() {
-  return (
-    src(path.src.js)
-      .pipe(plumber({ errorHandler: notifier.error }))
-      .pipe(dest(path.build.js))
-      /*.pipe(src(path.src.js))*/
-      /*src(["node_modules/swiper/swiper-bundle.js", path.src.js])*/
-      /*.pipe(plumber({ errorHandler: notifier.error }))
-      .pipe(babel({ presets: ["@babel/env"] }))
-      .pipe(concat("index.min.js"))
-      .pipe(uglify())
-      .pipe(dest(path.build.js)) */
-      .pipe(browserSync.reload({ stream: true }))
-  );
+  return src(path.src.js)
+    .pipe(plumber({ errorHandler: notifier.error }))
+    .pipe(dest(path.build.js))
+    .pipe(browserSync.reload({ stream: true }));
 }
 
 function imgTask() {
@@ -133,12 +124,16 @@ function fontsTask() {
     .pipe(dest(path.build.fonts));
 }
 
-function faviconsTask() {
-  return src(path.src.favicons).pipe(dest(path.build.favicons));
+function faviconTask() {
+  return src(path.src.favicon).pipe(dest(path.build.favicon));
 }
 
 function cleanDest() {
   return del([path.clean, path.ignore.img, path.ignore.fonts]);
+}
+
+function deploy() {
+  return src(path.deploy).pipe(ghPages());
 }
 
 function watcher() {
@@ -148,7 +143,7 @@ function watcher() {
   watch([path.watch.js], jsTask);
   watch([path.watch.img], imgTask);
   watch([path.watch.fonts], fontsTask);
-  watch([path.watch.favicons], faviconsTask);
+  watch([path.watch.favicon], faviconTask);
 }
 
 const tasks = parallel(
@@ -158,8 +153,9 @@ const tasks = parallel(
   jsTask,
   imgTask,
   fontsTask,
-  faviconsTask
+  faviconTask
 );
 const dev = series(cleanDest, tasks, parallel(watcher, sync));
 
 exports.default = dev;
+exports.deploy = deploy;
